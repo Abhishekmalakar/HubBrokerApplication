@@ -1,0 +1,96 @@
+<mat-card>
+    <mat-toolbar>
+
+        <!-- <h1 style="padding-left: 40%;">{{title}}</h1> -->
+
+    </mat-toolbar>
+    <mat-card-content>
+        <form [formGroup]="empFormGroup">
+            <table>
+                <tr>
+                    <td>FirstName</td>
+                    <td>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <input matInput type="text id=firstName" formControlName="firstName" placeholder="*" [(ngModel)]="emp.firstName" required>
+
+                        </mat-form-field>
+
+                    </td>
+
+                    <td>LastName</td>
+                    <td>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <input matInput type="text id=lastName" formControlName="lastName" placeholder="*" [(ngModel)]="emp.lastName" required>
+
+                        </mat-form-field>
+
+                    </td>
+                </tr>
+                <tr>
+
+                    <td>EmailAdress</td>
+                    <td>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <input matInput type="text id=emailAddress" formControlName="emailAddress" placeholder="*" [(ngModel)]="emp.emailAddress" required>
+                        </mat-form-field>
+                    </td>
+
+
+
+                    <td>MobileNo</td>
+                    <td>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <input matInput type="text id=mob" formControlName="mob" placeholder="*" [(ngModel)]="emp.mobileNo" required>
+                            <mat-hint>Not more then 10 characters long.</mat-hint>
+
+                        </mat-form-field>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td> CurrentAddress</td>
+                    <td>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <input matInput type="text id=currentAddress" formControlName="currentAddress" placeholder="*" [(ngModel)]="emp.currentAddress" required>
+                            <mat-hint>Not more then 100 characters long.</mat-hint>
+
+                        </mat-form-field>
+                    </td>
+                    <td> ParmanentAddress</td>
+                    <td>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <input matInput type="text id=permanentAddress" formControlName="permanentAddress" placeholder="*" [(ngModel)]="emp.permanentAddress" required>
+
+                            <mat-hint>Not more then 100 characters long.</mat-hint>
+
+                        </mat-form-field>
+                    </td>
+                    <tr>
+                        <td>Designation</td>
+                        <td>
+                            <mat-form-field>
+                                <mat-select id="jobId" formControlName="jobId" placeholder="*" [(ngModel)]="emp.jobId">
+                                    <mat-option *ngFor="let company of companies" [value]="company.jobId">{{company.jobName}}</mat-option>
+
+                                </mat-select>
+
+                            </mat-form-field>
+                        </td>
+                        <td>
+
+                            <div class="form-group">
+                                <label for="name">Choose Documents <span class="color-red"></span></label><br />
+                                <input type="file" id="FileInput" class="form-control-file" (change)="handleFileInput($event)" multiple="multiple">
+                                <button type="button" (click)="onSubmit()">Upload</button>
+
+                            </div>
+
+                        </td>
+
+
+
+                    </tr>
+            </table>
+        </form>
+    </mat-card-content>
+    <button class="mat-raised-button mat-primary" (click)="SaveEmployeeDetails()">Save</button>
